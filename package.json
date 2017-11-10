@@ -1,0 +1,11 @@
+{
+  "name": "bitstream",
+  "version": "0.0.1",
+  "description": "bitstreamer",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "mime": "~1.2.7",
+    "redis": "^2.8.0",
+    "request": "~2.79.0"
+  }
+}
