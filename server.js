@@ -44,7 +44,63 @@ app.get("/retrieve", function(request, response) {
 	})
 });
 app.get("/", function(request, response) {
-	page = '<!DOCTYPE html><html style="font-family:sans-serif;"><head><title>Bitstream</title><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script></head><body><style>.container{width:80%; margin-left: 10%;}</style><div align="center" class="container"><h1>Please upload a document (under 25 mb)</h1><input id="inputFile" onchange="convertToBase64();" type="file"> <span id="bitstream"></span><script type="text/javascript">function convertToBase64(){var selectedFile=document.getElementById("inputFile").files; if (selectedFile.length > 0){var fileToLoad=selectedFile[0]; var fileReader=new FileReader(); var base64;var file_id; fileReader.onload=function(fileLoadedEvent){base64=fileLoadedEvent.target.result; file_id=makeid();console.log("File id is:" + file_id); $.ajax({url: "/store",dataType: "json",type: "post",contentType: "application/json",data: JSON.stringify({"id": file_id, "data": base64}),processData: false,success: function( data, textStatus, jQxhr ){$("#bitstream").html("<a href=&quot;/retrieve?id=" + file_id + "&quot;> Copy this link (expires in 10 min) </a>"); console.log("success");},error: function( jqXhr, textStatus, errorThrown ){console.log( errorThrown );}});}; basedata=fileReader.readAsDataURL(fileToLoad);}}function makeid(){var text=""; var possible="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; for (var i=0; i < 5; i++) text +=possible.charAt(Math.floor(Math.random() * possible.length)); return text;}</script></div></body></html>';
+	page = `<!DOCTYPE html>
+	<html style="font-family:sans-serif;">
+	<head>
+		<title>Bitstream</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+		</script>
+	</head>
+	<body>
+		<style>
+		   .container{width:80%; margin-left: 10%;}
+		</style>
+		<div align="center" class="container">
+			<h1>Please upload a document (under 25 mb)</h1><input id="inputFile" onchange="convertToBase64();" type="file"> <span id="bitstream"></span>
+			<script type="text/javascript">
+			function convertToBase64() {
+			  var selectedFile = document.getElementById("inputFile").files;
+			  if (selectedFile.length > 0) {
+			      var fileToLoad = selectedFile[0];
+			      var fileReader = new FileReader();
+			      var base64;
+						var file_id;
+			      fileReader.onload = function(fileLoadedEvent) {
+			          base64 = fileLoadedEvent.target.result;
+			          file_id = makeid();
+								console.log("File id is:" + file_id)
+								$.ajax({
+										url: "/store",
+										dataType: "json",
+										type: "post",
+										contentType: "application/json",
+										data: JSON.stringify( { "id": file_id, "data": base64 } ),
+										processData: false,
+										success: function( data, textStatus, jQxhr ){
+											$("#bitstream").html("<a href='/retrieve?id=" + file_id + "'> Copy this link (expires in 10 min) <\/a>")
+											console.log("success");
+										},
+										error: function( jqXhr, textStatus, errorThrown ){
+												console.log( errorThrown );
+										}
+								});
+
+			      };
+			      basedata = fileReader.readAsDataURL(fileToLoad);
+				  }
+			}
+
+			function makeid() {
+			  var text = "";
+			  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			  for (var i = 0; i < 5; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
+			  return text;
+			}
+			</script>
+		</div>
+	</body>
+	</html>
+	`;
 	zlib.gzip(page, function(error, result) {
 		if (error) throw error;
 		response.end(result);
