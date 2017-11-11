@@ -85,6 +85,24 @@ app.get("/", function(request, response) {
 					</form>
 				</div>
 				<style>
+							.typed-cursor {
+							    -webkit-animation: blinker 1s linear infinite;
+								    animation: blinker 1s linear infinite;
+							}
+
+							@-webkit-keyframes blinker {
+							    50% {
+								opacity: 0;
+								-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+							    }
+							}
+
+							@keyframes blinker {
+							    50% {
+								opacity: 0;
+								-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+							    }
+							}
 							body {
 								background: rgba(0, 0, 0, 0.9);
 								color: white;
