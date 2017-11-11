@@ -98,10 +98,12 @@ app.get("/", function(request, response) {
 		          color: #ffffff;
 		      }
 		      form input{
+		          position: absolute;
 							margin-left: -50%;
 							margin-top: -35%;
 		          padding: 0;
 		          width: 100%;
+		          height: 50%;
 		          outline: none;
 		          opacity: 0;
 		      }
@@ -119,7 +121,6 @@ app.get("/", function(request, response) {
 									margin-top:20vh!important;
 							}
 							form input{
-									position: absolute;
 				          height: 100%;
 				      }
 					}
