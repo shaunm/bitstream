@@ -6,8 +6,7 @@ var fs = require('fs');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ parameterLimit: 100000, limit: '25mb', extended: true })); // support encoded bodies
-
-//app.use(bodyParser.json({limit: '25mb', type: 'application/json'}));
+app.use(bodyParser.json({limit: '25mb', type: 'application/json'}));
 
 
 var client = require('redis').createClient(process.env.REDIS_URL || {host : 'localhost', port : 6379});
