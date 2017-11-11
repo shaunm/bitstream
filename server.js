@@ -224,7 +224,7 @@ app.get("/", function(request, response) {
 		                                  data: JSON.stringify( { "id": file_id, "data": base64 } ),
 		                                  processData: false,
 		                                  success: function( data, textStatus, jQxhr ){
-		                                      $("#bitstream").html('<p>The link stops working in 5 minutes. Copy it anywhere: </p> <input class="copy" id="foo" value="' + window.location.href + 'retrieve?id=' + file_id + '"> <button class="btn"  data-clipboard-target="#foo"> <img style="max-height: -webkit-fill-available;" src="https://cdn.rawgit.com/zenorocha/clipboard.js/gh-pages/assets/images/clippy.svg" alt="Copy"> </button>');
+		                                      $("#bitstream").html('<p>The link stops working in 5 minutes. Copy it anywhere: </p> <input class="copy" id="foo" value="' + window.location.href + 'get/' + file_id + '"> <button class="btn"  data-clipboard-target="#foo"> <img style="max-height: -webkit-fill-available;" src="https://cdn.rawgit.com/zenorocha/clipboard.js/gh-pages/assets/images/clippy.svg" alt="Copy"> </button>');
 																					new Clipboard('.btn');
 																					console.log("success");
 		                                  },
