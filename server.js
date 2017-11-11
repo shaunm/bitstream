@@ -254,7 +254,7 @@ app.get("/", function(request, response) {
 
 });
 app.get("*", function(request, response) {
-	zlib.gzip('<h1 align="center">Not a valid link<br>:(</h1>', function(error, result) {
+	zlib.gzip('<html><head><meta content="width=device-width, initial-scale=1" name="viewport"></head><body> <div align="center" style="margin: 35vh 0vh; font-family: monospace!important;"><h1 style="font-size: 2rem; ">Not a valid link<br>:(</h1> <br> <a href="/">back</a> </div> </body></html>', function(error, result) {
 		if (error) throw error;
 		response.end(result);
 	})
