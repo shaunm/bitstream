@@ -103,7 +103,6 @@ app.get("/", function(request, response) {
 							margin-top: -35%;
 		          padding: 0;
 		          width: 100%;
-		          height: 100%;
 		          outline: none;
 		          opacity: 0;
 		      }
@@ -120,7 +119,9 @@ app.get("/", function(request, response) {
 							#bitstream{
 									margin-top:20vh!important;
 							}
-
+							form input{
+				          height: 100%;
+				      }
 					}
 
 		      .block {
