@@ -24,7 +24,7 @@ app.all("*", function(request, response, next) {
 	});
 	next();
 });
-app.get("/store", function(request, response) {
+app.post("/store", function(request, response) {
 	console.log(request.body);
 	id = request.body.id;
 	base64 = request.body.data;
