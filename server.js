@@ -36,7 +36,7 @@ app.post("/store", function(request, response) {
 	})
 });
 app.get("/retrieve", function(request, response) {
-	fileData = redis.get(request.query.id)
+	fileData = client.get(request.query.id)
 	var fileContents = Buffer.from(fileData, "base64");
 	zlib.gzip(fileContents, function(error, result) {
 		if (error) throw error;
