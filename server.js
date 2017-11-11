@@ -9,14 +9,7 @@ app.use(bodyParser.urlencoded({ parameterLimit: 100000, limit: '25mb', extended:
 
 //app.use(bodyParser.json({limit: '25mb', type: 'application/json'}));
 
-
-if (process.env.REDISTOGO_URL) {
-	var rtg   = require("url").parse(process.env.REDIS_URL);
-	var redis = require("redis").createClient(rtg.port, rtg.hostname);
-	redis.auth(rtg.auth.split(":")[1]);
-} else {
-    var redis = require("redis").createClient();
-}
+var client = require('redis').createClient(process.env.REDIS_URL);
 
 
 
@@ -37,8 +30,8 @@ app.get("/store", function(request, response) {
 	id = request.body.id;
 	base64 = request.body.data;
 	console.log(id + ", "+ base64);
-	redis.set(id, base64);
-	redis.expire(id, 600);
+	client.set(id, base64);
+	client.expire(id, 600);
 	zlib.gzip('{"' + id + '": "success"}', function(error, result) {
 		if (error) throw error;
 		response.end(result);
