@@ -34,9 +34,9 @@ app.post("/store", function(request, response) {
 		response.end(result);
 	})
 });
-app.get("/retrieve", function(request, response) {
+app.get("/get/:file", function(request, response) {
 	//var fileContents = Buffer.from(fileData, "base64");
-	client.get(request.query.id, function(error, result) {
+	client.get(request.params.file, function(error, result) {
 	    if (error){
 				console.log('Error: '+ error);
 				zlib.gzip(error, function(error, result) {
