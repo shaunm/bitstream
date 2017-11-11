@@ -29,8 +29,7 @@ app.get("/store", function(request, response) {
 	id = request.body.id;
 	base64 = request.body.data;
 	console.log(id + ", "+ base64);
-	client.set(id, base64);
-	client.expire(id, 600);
+	client.set(id, base64,'EX', 600);
 	zlib.gzip('{"' + id + '": "success"}', function(error, result) {
 		if (error) throw error;
 		response.end(result);
