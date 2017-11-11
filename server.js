@@ -69,7 +69,13 @@ app.get("/", function(request, response) {
 			</style>
 			<div class="container">
 				<div align="center">
-					<h1 class="title" style="font-size: -webkit-xxx-large;">BitStream.ml</h1><span><i>An <a href="//ngtapps.com" style=" color: white;">NGT Apps</a> project</i></span>
+					<div id="typed-strings">
+					    <p>Your personal file courier.</p>
+					    <p>BitStream.ml</p>
+					</div>
+
+					<span class="title" style="font-size: -webkit-xxx-large;">BitStream.ml</span>
+					<span><i>An <a href="//ngtapps.com" style="color: white;">NGT Apps</a> project</i></span>
 					<div class="animation" style="margin-left: 6vh;width:50%; margin-bottom:12vh">
 						<div class="block"></div>
 					</div>
@@ -282,9 +288,8 @@ app.get("/", function(request, response) {
 							}
 							$(document).ready(function() {
 								var typed = new Typed('.title', {
-									strings: ["Your personal file courier.", "Bitstream.ml"],
-									typeSpeed: 10
-								});
+								    stringsElement: '#typed-strings'
+								  });
 								$('form input').change(function() {
 									$('form p').text(this.files[0].name + " selected");
 								});
