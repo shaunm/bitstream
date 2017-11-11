@@ -70,7 +70,8 @@ app.get("/", function(request, response) {
 	<div class="container">
 		<div align="center">
 			<h1 style=" font-size: -webkit-xxx-large;">BitStream.ml</h1>
-			<div class="animation" style="width:50%; margin-bottom:12vh">
+			<span><i>An <a href="//ngtapps.com" style=" color: white; ">NGT Apps</a> project</i></span>
+			<div class="animation" style="margin-left: 6vh;width:50%; margin-bottom:12vh">
 				<div class="block"></div>
 			</div>
 			<h3>Upload a file (under 25 mb)<br></h3>
