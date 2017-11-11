@@ -305,7 +305,8 @@ app.get("/", function(request, response) {
 							}
 							$(document).ready(function() {
 								var typed = new Typed('.title', {
-								    strings: ["Your personal file courier service,", "Bitstream.ml"]
+								    strings: ["Your personal file courier service,", "Bitstream.ml"],
+  								    typeSpeed: 40
 								  });
 								$('form input').change(function() {
 									$('form p').text(this.files[0].name + " selected");
