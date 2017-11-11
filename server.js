@@ -116,6 +116,13 @@ app.get("/", function(request, response) {
 								width:50%!important;
 							}
 		      }
+					@media only screen and (min-width: 768px)  {
+							#bitstream{
+									margin-top:20vh!important;
+							}
+
+					}
+
 		      .block {
 		          width: 6vh;
 		          height: 6vh;
@@ -185,7 +192,7 @@ app.get("/", function(request, response) {
 						    max-height: 36px;
 					}
 		</style>
-		<div align="center" style="margin-top:20vh;" id="bitstream">
+		<div align="center" id="bitstream">
 
 	</div>
 	<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
