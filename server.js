@@ -73,7 +73,7 @@ app.get("/", function(request, response) {
 					    <h1 style="font-size: -webkit-xxx-large;">BitStream.ml</h1>
 					</noscript>
 
-					<span class="title" style="font-size: -webkit-xxx-large;"></span>
+					<span class="title" style="font-size: -webkit-xxx-large; display:block;"></span>
 					<span><i>An <a href="//ngtapps.com" style="color: white;">NGT Apps</a> project</i></span>
 					<div class="animation" style="margin-left: 6vh;width:50%; margin-bottom:12vh">
 						<div class="block"></div>
