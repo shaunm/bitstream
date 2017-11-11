@@ -47,7 +47,7 @@ app.get("/retrieve", function(request, response) {
 				})
 			}
 	    else{
-				zlib.gzip('<!DOCTYPE html> <html style="font-family:sans-serif; font-weight:light;" align="center"> <body style=" margin: 0px; overflow: hidden; "> <title>File</title> <iframe id="main" style="width:100%; height:100vh; border:0px;"></iframe></body> <script> baseString= "' + result + '"; document.getElementById("main").setAttribute("src", baseString); </script>  </html>', function(error, result) {
+				zlib.gzip('<!DOCTYPE html> <html style="font-family:sans-serif; font-weight:light;" align="center"><head><meta name="viewport" content="width=device-width, initial-scale=1"></head> <body style=" margin: 0px; overflow: hidden; "> <title>File</title> <iframe id="main" style="width:100%; height:100vh; border:0px;"></iframe></body> <script> baseString= "' + result + '"; document.getElementById("main").setAttribute("src", baseString); </script>  </html>', function(error, result) {
 					if (error) throw error;
 					response.end(result);
 				})
@@ -60,6 +60,7 @@ app.get("/", function(request, response) {
 	<html style="font-family:sans-serif;">
 	<head>
 		<title>Bitstream</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 		</script>
 	</head>
@@ -92,7 +93,7 @@ app.get("/", function(request, response) {
 										data: JSON.stringify( { "id": file_id, "data": base64 } ),
 										processData: false,
 										success: function( data, textStatus, jQxhr ){
-											$("#bitstream").html("<a href='/retrieve?id=" + file_id + "'> Copy this link (expires in 10 min) <\/a>")
+											$("#bitstream").html("<br><a href='/retrieve?id=" + file_id + "'> Copy this link (expires in 10 min) <\/a>")
 											console.log("success");
 										},
 										error: function( jqXhr, textStatus, errorThrown ){
