@@ -86,6 +86,7 @@ app.get("/", function(request, response) {
 				</div>
 				<style>
 							.typed-cursor {
+							    font-size: -webkit-xxx-large;
 							    -webkit-animation: blinker 1s linear infinite;
 								    animation: blinker 1s linear infinite;
 							}
