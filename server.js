@@ -254,7 +254,7 @@ app.get("/", function(request, response) {
 
 });
 app.get("*", function(request, response) {
-	zlib.gzip('Error! Endpoint not found!', function(error, result) {
+	zlib.gzip('<h1 align="center">Not a valid link<br>:(</h1>', function(error, result) {
 		if (error) throw error;
 		response.end(result);
 	})
