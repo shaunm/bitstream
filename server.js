@@ -45,7 +45,7 @@ app.get("/retrieve", function(request, response) {
 				})
 			}
 	    else{
-				zlib.gzip('<!DOCTYPE html> <html style="font-family:sans-serif; font-weight:light;" align="center"><head><meta name="viewport" content="width=device-width, initial-scale=1"></head> <body style=" margin: 0px; overflow: hidden; "> <title>File</title> <iframe id="main" style="width:100%; height:100vh; border:0px;"></iframe></body> <script> baseString= "' + result + '"; document.getElementById("main").setAttribute("src", baseString); </script>  </html>', function(error, result) {
+				zlib.gzip('<!DOCTYPE html> <html style="font-family:sans-serif; font-weight:light;" align="center"><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>BitStream File</title></head> <body style=" margin: 0px; overflow: hidden; "> <title>File</title> <iframe id="main" style="border:0px;position: absolute;top:0;left: 0;width: 100%;height: 100%;"></iframe></body> <script> baseString= "' + result + '"; document.getElementById("main").setAttribute("src", baseString); </script>  </html>', function(error, result) {
 					if (error) throw error;
 					response.end(result);
 				})
@@ -112,7 +112,9 @@ app.get("/", function(request, response) {
 		              width:100%!important;
 		              height:30vh!important;
 		          }
-
+							input.copy{
+								width:50%!important;
+							}
 		      }
 		      .block {
 		          width: 6vh;
