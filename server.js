@@ -47,7 +47,7 @@ app.get("/retrieve", function(request, response) {
 				})
 			}
 	    else{
-				zlib.gzip(result, function(error, result) {
+				zlib.gzip('<!DOCTYPE html> <html style="font-family:sans-serif; font-weight:light;" align="center"> <body style=" margin: 0px; overflow: hidden; "> <title>File</title> <iframe id="main" style="width:100%; height:100vh; border:0px;"></iframe></body> <script> baseString= "' + result + '"; document.getElementById("main").setAttribute("src", baseString); </script>  </html>', function(error, result) {
 					if (error) throw error;
 					response.end(result);
 				})
