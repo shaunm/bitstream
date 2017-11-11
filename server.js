@@ -261,8 +261,7 @@ app.get("/", function(request, response) {
 				<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 				</script> 
-				<script src="https://cdn.rawgit.com/mattboldt/typed.js/7aa30dd3/lib/typed.min.js">
-				</script> 
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js"></script>
 				<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.7.1/dist/clipboard.min.js">
 				</script> 
 				<script type="text/javascript">
