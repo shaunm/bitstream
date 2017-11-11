@@ -67,6 +67,7 @@ app.get("/", function(request, response) {
 						var file_id;
 			      fileReader.onload = function(fileLoadedEvent) {
 			          base64 = fileLoadedEvent.target.result;
+								console.log(base64);
 			          file_id = makeid();
 								console.log("File id is:" + file_id)
 								$.ajax({
