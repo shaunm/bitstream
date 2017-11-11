@@ -102,7 +102,7 @@ app.get("/", function(request, response) {
 		      form input{
 		          position: absolute;
 							margin-left: -50%;
-							margin-top: -25%;
+							margin-top: -35%;
 		          padding: 0;
 		          width: 100%;
 		          height: 100%;
@@ -157,6 +157,7 @@ app.get("/", function(request, response) {
 				    background-position: right 8px center;
 				    border: 1px solid #ccc;
 				    border-radius: 3px;
+						z-index:100;
 				    outline: none;
 				    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
 
