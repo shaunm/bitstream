@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({ parameterLimit: 100000, limit: '25mb', extended:
 
 //app.use(bodyParser.json({limit: '25mb', type: 'application/json'}));
 
-var client = require('redis').createClient(process.env.REDIS_URL);
 
+var client = require('redis').createClient(process.env.REDIS_URL || rtg.port, rtg.hostname);
 
 
 
