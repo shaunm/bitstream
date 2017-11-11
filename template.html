@@ -22,23 +22,25 @@
 		      fileReader.onload = function(fileLoadedEvent) {
 		          base64 = fileLoadedEvent.target.result;
 		          file_id = makeid();
+							console.log("File id is:" + file_id)
+							$.ajax({
+									url: "/store",
+									dataType: "json",
+									type: "post",
+									contentType: "application/json",
+									data: JSON.stringify( { "id": file_id, "data": base64 } ),
+									processData: false,
+									success: function( data, textStatus, jQxhr ){
+										$("#bitstream").html("<a href=&quot;/retrieve?id=" + file_id + "&quot;> Copy this link (expires in 10 min) <\/a>")
+										console.log("success");
+									},
+									error: function( jqXhr, textStatus, errorThrown ){
+											console.log( errorThrown );
+									}
+							});
+
 		      };
 		      basedata = fileReader.readAsDataURL(fileToLoad);
-					$.ajax({
-					    url: "/store",
-					    dataType: "json",
-					    type: "post",
-					    contentType: "application/json",
-					    data: JSON.stringify( { "id": file_id, "data": basedata } ),
-					    processData: false,
-					    success: function( data, textStatus, jQxhr ){
-								$("#bitstream").html("<a href=&quot;/retrieve?id=" + file_id + "&quot;> Copy this link (expires in 10 min) <\/a>")
-
-					    },
-					    error: function( jqXhr, textStatus, errorThrown ){
-					        console.log( errorThrown );
-					    }
-					});
 			  }
 		}
 
