@@ -36,12 +36,24 @@ app.post("/store", function(request, response) {
 	})
 });
 app.get("/retrieve", function(request, response) {
-	fileData = client.get(request.query.id)
 	var fileContents = Buffer.from(fileData, "base64");
-	zlib.gzip(fileContents, function(error, result) {
-		if (error) throw error;
-		response.end(result);
-	})
+
+	client.get(request.query.id, function(error, result) {
+	    if (error){
+				console.log('Error: '+ error);
+				zlib.gzip(error, function(error, result) {
+					if (error) throw error;
+					response.end(result);
+				})
+			}
+	    else{
+				zlib.gzip(result, function(error, result) {
+					if (error) throw error;
+					response.end(result);
+				})
+			}
+	});
+
 });
 app.get("/", function(request, response) {
 	page = `<!DOCTYPE html>
