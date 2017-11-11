@@ -37,7 +37,7 @@ app.post("/store", function(request, response) {
 });
 app.get("/retrieve", function(request, response) {
 	//var fileContents = Buffer.from(fileData, "base64");
-
+	console.log(client.get(request.query.id));
 	client.get(request.query.id, function(error, result) {
 	    if (error){
 				console.log('Error: '+ error);
