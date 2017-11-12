@@ -4,6 +4,7 @@ var http = require("http");
 var https = require("https");
 var fs = require('fs');
 var app = express();
+var path = require('path');
 var bodyParser = require('body-parser');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
