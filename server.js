@@ -5,6 +5,7 @@ var https = require("https");
 var fs = require('fs');
 var app = express();
 var bodyParser = require('body-parser');
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
 	parameterLimit: 100000,
 	limit: '25mb',
