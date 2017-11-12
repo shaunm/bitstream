@@ -7,6 +7,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 app.use('/public/jquery.min.js', express.static(process.cwd() + '/public/jquery.min.js'));
+app.use('/public/typed.min.js', express.static(process.cwd() + '/public/typed.min.js'));
 app.use('/public/clipboard.min.js', express.static(process.cwd() + '/public/clipboard.min.js'));
 app.use(bodyParser.urlencoded({
 	parameterLimit: 100000,
