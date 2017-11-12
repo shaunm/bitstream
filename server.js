@@ -6,7 +6,8 @@ var fs = require('fs');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-app.use(express.static(__dirname + '/public'));
+process.env.PWD = process.cwd()
+app.use(express.static(process.env.PWD + '/public'));
 app.use(bodyParser.urlencoded({
 	parameterLimit: 100000,
 	limit: '25mb',
