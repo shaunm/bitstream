@@ -6,8 +6,7 @@ var fs = require('fs');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-process.env.PWD = process.cwd()
-server.use('/public/jquery.min.js', express.static(__dirname + '/public/jquery.min.js'));
+server.use('/public/jquery.min.js', express.static(process.cwd() + '/public/jquery.min.js'));
 app.use(bodyParser.urlencoded({
 	parameterLimit: 100000,
 	limit: '25mb',
