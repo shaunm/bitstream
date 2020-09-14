@@ -4,7 +4,7 @@
   "description": "bitstreamer",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "mime": "~1.2.7",
+    "mime": "~2.4.6",
     "redis": "^2.8.0",
     "request": "~2.79.0"
   }
