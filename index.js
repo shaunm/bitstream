@@ -15,6 +15,10 @@ const client = require('redis').createClient(process.env.REDIS_URL || {
     port: 6379
 });
 
+client.on('error', function(err) {
+    console.log(err);
+});
+
 app.post("/store", jsonParser, async (req, res) => {
     let b64 = req.body.data;
 

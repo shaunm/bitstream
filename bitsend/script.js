@@ -21,23 +21,29 @@ function upload(){
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({data})
-            }).then((res) => res.json()).then((data) => JSON.stringify(data));
-            contentId = await rawResponse.success;
+            }).then((res) => res.json()).then((data) => {
+                let contentId =  JSON.stringify(data).success;
+                console.log(`ID: ${contentId}`);
+                let accessUrl = `${window.location.href}#${contentId}`;
+                let copyHTML =  `
+            <div class="input-group">
+                <input id="foo" value="${accessUrl}">
+            <button class="btn" data-clipboard-target="#foo">
+                <img src="https://clipboardjs.com/assets/images/clippy.svg" alt="Copy to clipboard">
+            </button>        
+               </div>
+
+        `;
+                $("#bitstream").html(copyHTML);
+                alert(`You have 5 minutes to visit the following link in your browser: \n${accessUrl}`);s
+            });
+
         }
         catch(e){
             console.error(e);
             alert(e);
         }
-        console.log(`ID: ${contentId}`);
-        let accessUrl = `${window.location.href}#${contentId}`;
-        let copyHTML =  `
-            <input id="foo" value="${accessUrl}">
-            <button class="btn" data-clipboard-target="#foo">
-                <img src="https://clipboardjs.com/assets/images/clippy.svg" alt="Copy to clipboard">
-            </button>
-        `;
-        $("#bitstream").html(copyHTML);
-        alert(`You have 5 minutes to visit the following link in your browser: \n${accessUrl}`);
+
 
     });
 }
@@ -46,14 +52,15 @@ async function getFile(fileID){
     let content;
     try{
         const rawResponse = await fetch(BASE_URL + `get/${fileID}`);
-        content = await rawResponse.json()
+        content = await rawResponse.json();
+        let data = content.data;
+        window.open(data);
     }
     catch(e){
         console.error(e);
         alert(e);
     }
-    let data = content.data;
-    window.open(data);
+
 }
 
 function getBase64(file) {
