@@ -10,7 +10,7 @@
     "compression": "^1.7.4"
   },
   "scripts": {
-    "start": "index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
