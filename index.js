@@ -25,7 +25,7 @@ app.post("/store", jsonParser, async (req, res) => {
     let id = crypto.createHash('md5').update(b64).digest("hex").toString().substring(0, 8);
 
     try {
-        await client.set(id, b64, 300);
+        await client.set(id, b64, "EX", 300);
     }
     catch(e){
         res.status(500).json({"error": e});
