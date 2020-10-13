@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 let jsonParser = bodyParser.json();
 
-app.use(cors());
+app.use(cors({origin: true}));
 app.use(compression());
 
 const client = require('redis').createClient(process.env.REDIS_URL || {

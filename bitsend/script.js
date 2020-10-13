@@ -12,6 +12,7 @@ $(document).ready(function() {
 function upload(){
     let file = document.getElementById("files").files[0];
     getBase64(file).then( async (data) => {
+        let contentId;
         try{
             const rawResponse = await fetch(BASE_URL + "store", {
                 method: 'POST',
@@ -20,8 +21,8 @@ function upload(){
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({data})
-            });
-            const contentId = await rawResponse.json().success;
+            }).then((res) => res.json()).then((data) => JSON.stringify(data));
+            contentId = await rawResponse.success;
         }
         catch(e){
             console.error(e);
@@ -42,9 +43,10 @@ function upload(){
 }
 
 async function getFile(fileID){
+    let content;
     try{
         const rawResponse = await fetch(BASE_URL + `get/${fileID}`);
-        const content = await rawResponse.json()
+        content = await rawResponse.json()
     }
     catch(e){
         console.error(e);
