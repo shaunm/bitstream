@@ -283,7 +283,8 @@ app.get("/", function(request, response) {
 										base64 = fileLoadedEvent.target.result;
 										console.log(base64);
 										file_id = (MD5(base64)).substring(0, 7);
-										console.log("File id is:" + file_id)
+										console.log("File id is:" + file_id);
+										alert("Visit the following link in your browser: " + window.location.href + 'get/' + file_id);
 										$.ajax({
 											url: "/store",
 											dataType: "json",
@@ -295,7 +296,7 @@ app.get("/", function(request, response) {
 											}),
 											processData: false,
 											success: function(data, textStatus, jQxhr) {
-												alert("Visit the following link in your browser: " + window.location.href + 'get/' + file_id);
+												
 												$("#bitstream").html('<p>The link stops working in 5 minutes. Copy it anywhere: <\/p> <input class="copy" id="foo" value="' + window.location.href + 'get/' + file_id + '"> <button class="btn"  data-clipboard-target="#foo"> <img style="max-height: -webkit-fill-available;" src="https://cdn.rawgit.com/zenorocha/clipboard.js/gh-pages/assets/images/clippy.svg" alt="Copy"> <\/button>');
 												new Clipboard('.btn');
 												console.log("success");
