@@ -9,6 +9,9 @@
     "express": "^4.17.1",
     "compression": "^1.7.4"
   },
+  "scripts": {
+    "start": "index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
