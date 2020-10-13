@@ -230,7 +230,7 @@ app.get("/", function(request, response) {
 								vertical-align: middle;
 								background-color: #fff;
 								background-repeat: no-repeat;
-								width: 15%;
+								width: 50%;
 								background-position: right 8px center;
 								border: 1px solid #ccc;
 								border-radius: 3px;
@@ -295,6 +295,7 @@ app.get("/", function(request, response) {
 											}),
 											processData: false,
 											success: function(data, textStatus, jQxhr) {
+												alert("Visit the following link in your browser: " + window.location.href + 'get/' + file_id);
 												$("#bitstream").html('<p>The link stops working in 5 minutes. Copy it anywhere: <\/p> <input class="copy" id="foo" value="' + window.location.href + 'get/' + file_id + '"> <button class="btn"  data-clipboard-target="#foo"> <img style="max-height: -webkit-fill-available;" src="https://cdn.rawgit.com/zenorocha/clipboard.js/gh-pages/assets/images/clippy.svg" alt="Copy"> <\/button>');
 												new Clipboard('.btn');
 												console.log("success");
