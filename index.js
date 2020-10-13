@@ -1,20 +1,15 @@
 const express = require("express");
+const cors = require('cors');
 const compression = require("compression");
 const crypto = require('crypto');
 const app = express();
 
+app.use(cors());
 app.use(compression());
 
 const client = require('redis').createClient(process.env.REDIS_URL || {
     host: 'localhost',
     port: 6379
-});
-
-app.all("*", (req, res, next) => {
-    res.writeHead(200, {
-        "Access-Control-Allow-Origin": "*",
-    });
-    next();
 });
 
 app.post("/store", async (req, res) => {
