@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html style="overflow-x: hidden;">
+<head>
+	<title>Bitstream</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+	<link href="styles.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ==" crossorigin="anonymous"></script>
+	<script src="script.js">
+	</script>
+</head>
+<body>
+	<style>
+	</style>
+	<div class="container">
+		<div align="center">
+			<h1 style="font-size: xx-large;">BitStreamer</h1>
+			<h3 class="title"></h3>
+			<div class="animation" style="width:50%; margin-bottom:12vh">
+				<div class="block"></div>
+			</div>
+			<h3>Upload a file (under 25 mb)<br></h3>
+			<form>
+				<input id="files" onchange="upload();" type="file">
+				<p>Drag a file here or click.</p>
+			</form>
+		</div>
+		<div align="center" id="bitstream">
+
+		</div>
+	</div>
+</body>
+</html>

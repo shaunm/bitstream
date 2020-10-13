@@ -2,7 +2,10 @@ const express = require("express");
 const cors = require('cors');
 const compression = require("compression");
 const crypto = require('crypto');
+const bodyParser = require('body-parser');
+
 const app = express();
+let jsonParser = bodyParser.json();
 
 app.use(cors());
 app.use(compression());
@@ -12,7 +15,7 @@ const client = require('redis').createClient(process.env.REDIS_URL || {
     port: 6379
 });
 
-app.post("/store", async (req, res) => {
+app.post("/store", jsonParser, async (req, res) => {
     let b64 = req.body.data;
 
     let id = crypto.createHash('md5').update(b64).digest("hex").toString().substring(0, 8);
