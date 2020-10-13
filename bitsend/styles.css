@@ -1,0 +1,66 @@
+body{
+    background: rgba(0,0,0,0.9);
+    color: white;
+    font-family: 'PT Mono', monospace;
+}
+form{
+    width: 33%;
+    height: 25%;
+    border: 4px dashed #fff;
+}
+form p{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 170px;
+    color: #ffffff;
+}
+form input{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+}
+span.typed-cursor {
+    display: none;
+}
+@media only screen and (max-width: 768px)  {
+    form{
+        width:100%!important;
+        height:30vh!important;
+    }
+
+}
+.block {
+    width: 6vh;
+    height: 6vh;
+    background-color: white;
+    position: relative;
+    -webkit-animation-name: stream; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: stream;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes stream {
+    0%   {background-color:#FFF; left:0%; top:0%}
+    25%  {background-color:#F44336; left:25%; top:0%;}
+    50%  {background-color:#FFEB3B; left:50%; top:0%;}
+    75%  {background-color:#2196F3; left:75%; top:0%;}
+    100% {background-color:#FFFF; left:100%; top:0%;}
+}
+
+/* Standard syntax */
+@keyframes stream {
+    0%   {background-color:#FFF; left:0%; top:0%}
+    25%  {background-color:#F44336; left:25%; top:0%;}
+    50%  {background-color:#FFEB3B; left:50%; top:0%;}
+    75%  {background-color:#2196F3; left:75%; top:0%;}
+    100% {background-color:#FFFF; left:100%; top:0%;}
+}
