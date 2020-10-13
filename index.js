@@ -46,5 +46,5 @@ app.get("*", function(req, res) {
     res.status(404).json({"error": "endpoint not found"});
 });
 
-var port = process.env.PORT || 8000;
+let port = process.env.PORT || 8000;
 app.listen(port);
