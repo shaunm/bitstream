@@ -21,7 +21,7 @@ client.on('error', function(err) {
 });
 
 app.post("/store", async (req, res) => {
-    let b64 = req.body.data;
+    let b64 = req.body.data.toString();
 
     let id = crypto.createHash('md5').update(b64).digest("hex").toString().substring(0, 8);
 
