@@ -6,8 +6,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.text());
 app.use(cors({origin: true}));
 app.use(compression());
 
@@ -21,6 +20,7 @@ client.on('error', function(err) {
 });
 
 app.post("/store", async (req, res) => {
+    console.log(req.body)
     let b64 = req.body;
 
     let id = crypto.createHash('md5').update(b64).digest("hex").toString().substring(0, 8);
