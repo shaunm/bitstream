@@ -61,9 +61,15 @@ async function getFile(fileID){
         const rawResponse = await fetch(BASE_URL + `get/${fileID}`);
         content = await rawResponse.json();
         let data = content.data;
-        document.getElementById('content-frame').src = data;
-        $("#content-frame").show();
-        $("main").hide();
+        if (data.indexOf("image")){
+            $("html").html(`<img src="${data}" style="height: 90vh;">`);
+        }
+        else{
+            document.getElementById('content-frame').src = data;
+            $("#content-frame").show();
+            $("main").hide();
+        }
+
 
     }
     catch(e){
