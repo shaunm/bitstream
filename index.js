@@ -23,7 +23,7 @@ app.post("/store", async (req, res) => {
     console.log(req.body)
     let b64 = req.body;
 
-    let id = crypto.createHash('md5').update(b64).digest("hex").toString().substring(0, 8);
+    let id = crypto.createHash('md5').update(b64).digest("hex").toString().substring(0, 4);
 
     try {
         await client.set(id, b64, "EX", 300);
