@@ -9,29 +9,34 @@ $(document).ready(function() {
     });
 });
 
-function upload(){
+async function upload(){
     let file = document.getElementById("files").files[0];
-    getBase64(file).then( async (data) => {
-        let contentId;
-        try{
-            contentId = await fetch(BASE_URL + "store", {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': "text/plain"
-                },
-                body: data
-            }).then((res) => res.json()).then((data) => {
-                return JSON.stringify(data).success;
-            });
+    let b64, contentId;
+    try {
+        b64 = await getBase64(file);
+    }
+    catch(e){
+        console.log(e);
+    }
+    try {
 
-        }
-        catch(e){
-            console.error(e);
-            alert(e);
-        }
+        contentId = await fetch(BASE_URL + "store", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': "text/plain"
+            },
+            body: b64
+        });
+        contentId = await contentId.json();
 
-        console.log(`ID: ${contentId}`);
+    }
+    catch(e){
+        console.log(e);
+    }
+    console.log(contentId);
+    contentId = contentId.success;
+    if (contentId != null){
         let accessUrl = `${window.location.href}#${contentId}`;
         let copyHTML =  `
                     <div class="input-group">
@@ -46,8 +51,8 @@ function upload(){
         alert(`You have 5 minutes to visit the following link in your browser: \n${accessUrl}`);
 
 
+    }
 
-    });
 }
 
 async function getFile(fileID){
@@ -56,7 +61,10 @@ async function getFile(fileID){
         const rawResponse = await fetch(BASE_URL + `get/${fileID}`);
         content = await rawResponse.json();
         let data = content.data;
-        window.open(data);
+        document.getElementById('content-frame').src = data;
+        $("#content-frame").show();
+        $("main").hide();
+
     }
     catch(e){
         console.error(e);

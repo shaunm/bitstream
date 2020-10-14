@@ -1,4 +1,4 @@
-body{
+main{
     background: rgba(0,0,0,0.9);
     color: white;
     font-family: 'PT Mono', monospace;
@@ -59,4 +59,9 @@ span.typed-cursor {
     50%  {background-color:#FFEB3B; left:50%; top:0%;}
     75%  {background-color:#2196F3; left:75%; top:0%;}
     100% {background-color:#FFFF; left:100%; top:0%;}
+}
+.clippy {
+    margin-top: -3px;
+    position: relative;
+    top: 3px;
 }
