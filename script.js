@@ -37,7 +37,7 @@ async function upload(){
     console.log(contentId);
     contentId = contentId.success;
     if (contentId != null){
-        let accessUrl = `${window.location.href}#${contentId}`;
+        let accessUrl = `${window.location.href.substring(0, str.length - 1)}#${contentId}`;
         let copyHTML =  `
                     <div class="input-group" style=" margin: 15vh 0px; width: 100%; ">
                         <input style="margin-right: 40px;width: 50%;" id="foo" value="${accessUrl}">
@@ -62,7 +62,7 @@ async function getFile(fileID){
         content = await rawResponse.json();
         let data = content.data;
         if (data.indexOf("image")){
-            $("html").html(`<img src="${data}" style="height: 90vh;">`);
+            $("html").html(`<img src="${data}" style="max-height: 100vh;max-width: 100%;">`);
         }
         else{
             document.getElementById('content-frame').src = data;
