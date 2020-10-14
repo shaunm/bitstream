@@ -12,18 +12,15 @@ $(document).ready(function() {
 function upload(){
     let file = document.getElementById("files").files[0];
     getBase64(file).then( async (data) => {
-
-        const formData = new FormData();
-        formData.append("data", data);
         let contentId;
         try{
             contentId = await fetch(BASE_URL + "store", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': "multipart/form-data"
+                    'Content-Type': "text/plain"
                 },
-                body: formData
+                body: data
             }).then((res) => res.json()).then((data) => {
                 return JSON.stringify(data).success;
             });
