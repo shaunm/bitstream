@@ -12,30 +12,20 @@ $(document).ready(function() {
 function upload(){
     let file = document.getElementById("files").files[0];
     getBase64(file).then( async (data) => {
+
+        const formData = new FormData();
+        data.append("data", data);
         let contentId;
         try{
-            const rawResponse = await fetch(BASE_URL + "store", {
+            contentId = await fetch(BASE_URL + "store", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': "multipart/form-data"
                 },
-                body: JSON.stringify({data})
+                body: formData
             }).then((res) => res.json()).then((data) => {
-                let contentId =  JSON.stringify(data).success;
-                console.log(`ID: ${contentId}`);
-                let accessUrl = `${window.location.href}#${contentId}`;
-                let copyHTML =  `
-            <div class="input-group">
-                <input id="foo" value="${accessUrl}">
-            <button class="btn" data-clipboard-target="#foo">
-                <img src="https://clipboardjs.com/assets/images/clippy.svg" alt="Copy to clipboard">
-            </button>        
-               </div>
-
-        `;
-                $("#bitstream").html(copyHTML);
-                alert(`You have 5 minutes to visit the following link in your browser: \n${accessUrl}`);s
+                return JSON.stringify(data).success;
             });
 
         }
@@ -43,6 +33,21 @@ function upload(){
             console.error(e);
             alert(e);
         }
+
+        console.log(`ID: ${contentId}`);
+        let accessUrl = `${window.location.href}#${contentId}`;
+        let copyHTML =  `
+                    <div class="input-group">
+                        <input id="foo" value="${accessUrl}">
+                    <button class="btn" data-clipboard-target="#foo">
+                        <img src="https://clipboardjs.com/assets/images/clippy.svg" alt="Copy to clipboard">
+                    </button>        
+                       </div>
+
+                 `;
+        $("#bitstream").html(copyHTML);
+        alert(`You have 5 minutes to visit the following link in your browser: \n${accessUrl}`);
+
 
 
     });

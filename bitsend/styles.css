@@ -16,13 +16,9 @@ form p{
     color: #ffffff;
 }
 form input{
-    position: absolute;
-    margin: 0;
-    padding: 0;
+    padding: 20%;
     width: 100%;
     height: 100%;
-    outline: none;
-    opacity: 0;
 }
 span.typed-cursor {
     display: none;

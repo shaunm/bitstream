@@ -3,6 +3,10 @@ const cors = require('cors');
 const compression = require("compression");
 const crypto = require('crypto');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
 
 const app = express();
 let jsonParser = bodyParser.json();
@@ -19,7 +23,7 @@ client.on('error', function(err) {
     console.log(err);
 });
 
-app.post("/store", jsonParser, async (req, res) => {
+app.post("/store", async (req, res) => {
     let b64 = req.body.data;
 
     let id = crypto.createHash('md5').update(b64).digest("hex").toString().substring(0, 8);
