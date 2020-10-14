@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use(bodyParser.text());
+app.use(bodyParser.text({limit: 25000000}));
 app.use(cors({origin: true}));
 app.use(compression());
 

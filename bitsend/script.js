@@ -39,12 +39,12 @@ async function upload(){
     if (contentId != null){
         let accessUrl = `${window.location.href}#${contentId}`;
         let copyHTML =  `
-                    <div class="input-group">
-                        <input id="foo" value="${accessUrl}">
-                    <button class="btn" data-clipboard-target="#foo">
-                        <img src="https://clipboardjs.com/assets/images/clippy.svg" alt="Copy to clipboard">
-                    </button>        
-                       </div>
+                    <div class="input-group" style=" margin: 15vh 0px; width: 100%; ">
+                        <input style="margin-right: 40px;width: 50%;" id="foo" value="${accessUrl}">
+                        <button class="btn" type="button" data-clipboard-demo="" data-clipboard-target="#foo">
+                            Copy
+                        </button> 
+                    </div>
 
                  `;
         $("#bitstream").html(copyHTML);
