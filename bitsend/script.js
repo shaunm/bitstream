@@ -14,7 +14,7 @@ function upload(){
     getBase64(file).then( async (data) => {
 
         const formData = new FormData();
-        data.append("data", data);
+        formData.append("data", data);
         let contentId;
         try{
             contentId = await fetch(BASE_URL + "store", {

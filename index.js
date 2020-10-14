@@ -3,14 +3,11 @@ const cors = require('cors');
 const compression = require("compression");
 const crypto = require('crypto');
 const bodyParser = require('body-parser');
-const multer = require('multer');
-
-const storage = multer.memoryStorage()
-const upload = multer({ storage: storage })
 
 const app = express();
-let jsonParser = bodyParser.json();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cors({origin: true}));
 app.use(compression());
 
